@@ -6,7 +6,14 @@ def test_get_existing_post(client, post_id):
 
     assert response.status_code == 200
 
-    
+    data = response.json()
+
+    assert data["id"] == post_id
+    assert "title" in data
+    assert "body" in data
+    assert "userId" in data
+
+
 def test_get_nonexistent_post(client):
     response = client.get("posts/999999")
 
