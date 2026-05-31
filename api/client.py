@@ -14,3 +14,10 @@ class APIClient:
             f"{self.base_url}/{endpoint}",
             timeout=self.timeout
         )
+
+    def post(self, endpoint, json=None):
+        return self.session.post(
+            f"{self.base_url}/{endpoint}",
+            json=json,
+            timeout=self.timeout
+        )
