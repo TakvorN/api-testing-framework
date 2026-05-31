@@ -10,16 +10,20 @@ class APIClient:
         self.session = requests.Session()
 
 
+    def _build_url(self, endpoint):
+        return f"{self.base_url}/{endpoint}"   
+
+
     def get(self, endpoint):
         return self.session.get(
-            f"{self.base_url}/{endpoint}",
+            self._build_url(endpoint),
             timeout=self.timeout
         )
     
 
     def post(self, endpoint, json=None):
         return self.session.post(
-            f"{self.base_url}/{endpoint}",
+            self._build_url(endpoint),
             json=json,
             timeout=self.timeout
         )
@@ -27,7 +31,7 @@ class APIClient:
 
     def put(self, endpoint, json=None):
         return self.session.put(
-            f"{self.base_url}/{endpoint}",
+            self._build_url(endpoint),
             json=json,
             timeout=self.timeout
         )
@@ -35,13 +39,13 @@ class APIClient:
 
     def patch(self, endpoint, json=None):
         return self.session.patch(
-            f"{self.base_url}/{endpoint}",
+            self._build_url(endpoint),
             json=json,
             timeout=self.timeout
         )
 
     def delete(self, endpoint):
         return self.session.delete(
-            f"{self.base_url}/{endpoint}",
+            self._build_url(endpoint),
             timeout=self.timeout
         )
