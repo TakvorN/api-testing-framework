@@ -18,6 +18,7 @@ The project demonstrates automated testing of REST API endpoints, including posi
 - Parametrized GET tests
 - Positive and negative API test cases
 - CRUD-oriented request coverage using GET, POST, PUT, PATCH, and DELETE
+- JSON schema validation for API response contracts
 - GitHub Actions CI for automated test execution
 
 ## Project Structure
@@ -68,6 +69,5 @@ JSONPlaceholder is a fake online REST API useful for testing and prototyping. Re
 
 ## Next Steps
 
-- Add schema validation
 - Add authentication flow tests using a second API
 - Improve reporting and documentation
