@@ -1,4 +1,7 @@
 import pytest
+from jsonschema import validate
+
+from schemas.post_schema import POST_SCHEMA
 
 @pytest.mark.parametrize("post_id", [1, 2, 3])
 def test_get_existing_post(client, post_id):
@@ -8,10 +11,9 @@ def test_get_existing_post(client, post_id):
 
     data = response.json()
 
+    validate(instance=data, schema=POST_SCHEMA)
+
     assert data["id"] == post_id
-    assert "title" in data
-    assert "body" in data
-    assert "userId" in data
 
 
 def test_get_nonexistent_post(client):
