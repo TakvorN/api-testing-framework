@@ -1,11 +1,11 @@
 import requests
 
-from config.settings import BASE_URL, TIMEOUT
+from config.settings import TIMEOUT
 
 
 class APIClient:
-    def __init__(self):
-        self.base_url = BASE_URL
+    def __init__(self, base_url):
+        self.base_url = base_url
         self.timeout = TIMEOUT
         self.session = requests.Session()
 
