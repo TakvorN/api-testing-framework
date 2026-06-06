@@ -25,6 +25,9 @@ The project demonstrates automated testing of REST API endpoints, including posi
 ## Project Structure
 
 ```text
+## Project Structure
+
+```text
 api-testing-framework/
 ├── api/
 │   ├── __init__.py
@@ -32,6 +35,9 @@ api-testing-framework/
 ├── config/
 │   ├── __init__.py
 │   └── settings.py
+├── schemas/
+│   ├── __init__.py
+│   └── post_schema.py
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py
