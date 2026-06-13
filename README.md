@@ -20,6 +20,7 @@ The project demonstrates automated testing of REST API endpoints, including posi
 - Positive and negative API test cases
 - CRUD-oriented request coverage using GET, POST, PUT, PATCH, and DELETE
 - JSON schema validation for API response contracts
+- Authentication token fixture for authenticated API tests
 - GitHub Actions CI for automated test execution
 
 ## Project Structure
@@ -41,6 +42,7 @@ api-testing-framework/
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py
+│   ├── test_booker_auth.py
 │   └── test_posts.py
 ├── pytest.ini
 ├── requirements.txt
@@ -76,7 +78,9 @@ JSONPlaceholder is a fake online REST API useful for testing and prototyping. Re
 
 The framework has been structured to support additional API targets, with Restful Booker planned for authentication flow testing.
 
+The project also uses [Restful Booker](https://restful-booker.herokuapp.com/) as a second API target for authentication flow testing.
+
 ## Next Steps
 
-- Add authentication flow tests using Restful Booker API
+- Add authentication booking flow tests using Restful Booker API
 - Improve reporting and documentation
