@@ -1,4 +1,4 @@
-def test_create_booking(created_booking, booking_payload):
+def test_booking_creation_returns_expected_data(created_booking, booking_payload):
     assert isinstance(created_booking["id"], int)
 
     booking = created_booking["booking"]
@@ -11,7 +11,7 @@ def test_create_booking(created_booking, booking_payload):
     assert booking["additionalneeds"] == booking_payload["additionalneeds"]
 
 
-def test_update_booking_with_auth(booker_client, auth_token, created_booking):
+def test_put_update_booking_with_auth(booker_client, auth_token, created_booking):
     booking_id = created_booking["id"]
 
     payload = {
@@ -48,3 +48,50 @@ def test_update_booking_with_auth(booker_client, auth_token, created_booking):
     assert data["depositpaid"] == payload["depositpaid"]
     assert data["bookingdates"] == payload["bookingdates"]
     assert data["additionalneeds"] == payload["additionalneeds"]
+
+
+def test_patch_partial_update_booking_with_auth(booker_client, auth_token, created_booking):
+    booking_id = created_booking["id"]
+
+    payload = {
+        "firstname": "Alice",
+        "lastname": "Johnson",
+    }
+
+    headers = {
+        "Cookie": f"token={auth_token}",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+
+    response = booker_client.patch(
+        f"booking/{booking_id}",
+        json=payload,
+        headers=headers,
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["firstname"] == payload["firstname"]
+    assert data["lastname"] == payload["lastname"]
+    assert "totalprice" in data
+    assert "depositpaid" in data
+    assert "bookingdates" in data
+    assert "additionalneeds" in data
+
+
+def test_delete_booking_with_auth(booker_client, auth_token, created_booking):
+    booking_id = created_booking["id"]
+
+    headers = {
+        "Cookie": f"token={auth_token}",
+    }
+
+    response = booker_client.delete(
+        f"booking/{booking_id}",
+        headers=headers,
+    )
+
+    assert response.status_code == 201

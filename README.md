@@ -22,6 +22,7 @@ The project demonstrates automated testing of REST API endpoints, including posi
 - JSON schema validation for API response contracts
 - Authentication token fixture for authenticated API tests
 - Authenticated API request support using custom headers
+- Authenticated API test coverage for protected endpoints
 - GitHub Actions CI for automated test execution
 
 ## Project Structure
@@ -29,7 +30,6 @@ The project demonstrates automated testing of REST API endpoints, including posi
 ```text
 ## Project Structure
 
-```text
 api-testing-framework/
 ├── api/
 │   ├── __init__.py
@@ -84,5 +84,5 @@ The project also uses [Restful Booker](https://restful-booker.herokuapp.com/) as
 
 ## Next Steps
 
-- - Add authenticated PATCH and DELETE booking tests using Restful Booker API
+- Add schema validation for Restful Booker booking responses
 - Improve reporting and documentation
