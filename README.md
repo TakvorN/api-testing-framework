@@ -1,38 +1,37 @@
 # API Testing Framework
 
-A Python-based API testing framework using `pytest` and `requests`.
-
 ![Tests](https://github.com/TakvorN/api-testing-framework/actions/workflows/tests.yml/badge.svg)
 
-The project demonstrates automated testing of REST API endpoints, including positive and negative test cases for common CRUD operations.
+A Python-based API testing framework using `pytest` and `requests`.
+
+The project demonstrates automated testing of REST API endpoints, including positive and negative test cases for common CRUD operations, schema validation, authentication flows, and CI-based test execution.
 
 ## Tech Stack
 
-- Python
-- pytest
-- requests
+* Python
+* pytest
+* requests
+* jsonschema
+* GitHub Actions
 
 ## Features
 
-- Reusable API client built on `requests.Session`
-- Centralized configuration for API base URLs and request timeout
-- Pytest fixtures for shared setup
-- Fixture-based support for multiple API targets
-- Parametrized GET tests
-- Positive and negative API test cases
-- CRUD-oriented request coverage using GET, POST, PUT, PATCH, and DELETE
-- JSON schema validation for API response contracts
-- Authentication token fixture for authenticated API tests
-- Authenticated API request support using custom headers
-- Authenticated API test coverage for protected endpoints
-- Negative authentication tests for protected endpoints
-- GitHub Actions CI for automated test execution
+* Reusable API client built on `requests.Session`
+* Centralized configuration for API base URLs and request timeout
+* Pytest fixtures for shared setup
+* Fixture-based support for multiple API targets
+* Parametrized GET tests
+* Positive and negative API test cases
+* CRUD-oriented request coverage using GET, POST, PUT, PATCH, and DELETE
+* JSON schema validation for API response contracts
+* Authentication token fixture for authenticated API tests
+* Custom header support for authenticated requests
+* Positive and negative authentication coverage for protected endpoints
+* GitHub Actions CI for automated test execution
 
 ## Project Structure
 
 ```text
-## Project Structure
-
 api-testing-framework/
 ├── api/
 │   ├── __init__.py
@@ -76,16 +75,19 @@ pip install -r requirements.txt
 pytest
 ```
 
-## Current API Target
+## API Targets
 
-This project currently uses [JSONPlaceholder](https://jsonplaceholder.typicode.com/) as the initial public REST API target.
+This project uses two public REST API targets.
 
-JSONPlaceholder is a fake online REST API useful for testing and prototyping. Read operations use predefined sample data, while write operations such as POST, PUT, PATCH, and DELETE are simulated and not persisted.
+### JSONPlaceholder
 
-The framework has been structured to support additional API targets, with Restful Booker planned for authentication flow testing.
+[JSONPlaceholder](https://jsonplaceholder.typicode.com/) is used as the initial public REST API target for CRUD-oriented request testing.
 
-The project also uses [Restful Booker](https://restful-booker.herokuapp.com/) as a second API target for authentication flow testing.
+It is a fake online REST API useful for testing and prototyping. Read operations use predefined sample data, while write operations such as POST, PUT, PATCH, and DELETE are simulated and not persisted.
 
-## Next Steps
+### Restful Booker
 
-- Improve reporting and documentation
+[Restful Booker](https://restful-booker.herokuapp.com/) is used as a second API target for authentication flow testing.
+
+The project tests booking creation, authenticated booking updates, authenticated deletion, and negative authentication scenarios for protected endpoints.
+
