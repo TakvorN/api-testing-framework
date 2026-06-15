@@ -27,9 +27,9 @@ def test_put_update_booking_with_auth(booker_client, auth_token, created_booking
     }
 
     headers = {
-        "Cookie": f"token={auth_token}",
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "Cookie": f"token={auth_token}",
     }
 
     response = booker_client.put(
@@ -59,9 +59,9 @@ def test_patch_partial_update_booking_with_auth(booker_client, auth_token, creat
     }
 
     headers = {
-        "Cookie": f"token={auth_token}",
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "Cookie": f"token={auth_token}",
     }
 
     response = booker_client.patch(
