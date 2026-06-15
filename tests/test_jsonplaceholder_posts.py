@@ -1,7 +1,7 @@
 import pytest
 from jsonschema import validate
 
-from schemas.post_schema import POST_SCHEMA
+from schemas.jsonplaceholder_post_schema import POST_SCHEMA
 
 @pytest.mark.parametrize("post_id", [1, 2, 3])
 def test_get_existing_post(jsonplaceholder_client, post_id):
