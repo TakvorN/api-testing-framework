@@ -2,6 +2,8 @@
 
 A Python-based API testing framework using `pytest` and `requests`.
 
+![Tests](https://github.com/TakvorN/api-testing-framework/actions/workflows/tests.yml/badge.svg)
+
 The project demonstrates automated testing of REST API endpoints, including positive and negative test cases for common CRUD operations.
 
 ## Tech Stack
