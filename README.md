@@ -23,6 +23,7 @@ The project demonstrates automated testing of REST API endpoints, including posi
 - Authentication token fixture for authenticated API tests
 - Authenticated API request support using custom headers
 - Authenticated API test coverage for protected endpoints
+- Negative authentication tests for protected endpoints
 - GitHub Actions CI for automated test execution
 
 ## Project Structure

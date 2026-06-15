@@ -57,6 +57,29 @@ def test_put_update_booking_with_auth(booker_client, auth_token, created_booking
     assert data["additionalneeds"] == payload["additionalneeds"]
 
 
+def test_put_update_booking_without_auth_returns_forbidden(booker_client, created_booking):
+    booking_id = created_booking["id"]
+
+    payload = {
+        "firstname": "Unauthorized",
+        "lastname": "Update",
+        "totalprice": 999,
+        "depositpaid": False,
+        "bookingdates": {
+            "checkin": "2026-09-01",
+            "checkout": "2026-09-05",
+        },
+        "additionalneeds": "None",
+    }
+
+    response = booker_client.put(
+        f"booking/{booking_id}",
+        json=payload,
+    )
+
+    assert response.status_code == 403
+
+
 def test_patch_partial_update_booking_with_auth(booker_client, auth_token, created_booking):
     booking_id = created_booking["id"]
 
@@ -104,3 +127,11 @@ def test_delete_booking_with_auth(booker_client, auth_token, created_booking):
     )
 
     assert response.status_code == 201
+
+
+def test_delete_booking_without_auth_returns_forbidden(booker_client, created_booking):
+    booking_id = created_booking["id"]
+
+    response = booker_client.delete(f"booking/{booking_id}")
+
+    assert response.status_code == 403
