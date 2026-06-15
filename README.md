@@ -39,13 +39,14 @@ api-testing-framework/
 │   └── settings.py
 ├── schemas/
 │   ├── __init__.py
-│   └── post_schema.py
+│   ├── booker_schema.py
+│   └── jsonplaceholder_post_schema.py
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py
 │   ├── test_booker_auth.py
 │   ├── test_booker_booking.py
-│   └── test_posts.py
+│   └── test_jsonplaceholder_posts.py
 ├── pytest.ini
 ├── requirements.txt
 └── README.md
@@ -84,5 +85,4 @@ The project also uses [Restful Booker](https://restful-booker.herokuapp.com/) as
 
 ## Next Steps
 
-- Add schema validation for Restful Booker booking responses
 - Improve reporting and documentation

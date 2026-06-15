@@ -1,3 +1,8 @@
+from jsonschema import validate
+
+from schemas.booker_schema import BOOKING_SCHEMA
+
+
 def test_booking_creation_returns_expected_data(created_booking, booking_payload):
     assert isinstance(created_booking["id"], int)
 
@@ -42,6 +47,8 @@ def test_put_update_booking_with_auth(booker_client, auth_token, created_booking
 
     data = response.json()
 
+    validate(instance=data, schema=BOOKING_SCHEMA)
+
     assert data["firstname"] == payload["firstname"]
     assert data["lastname"] == payload["lastname"]
     assert data["totalprice"] == payload["totalprice"]
@@ -73,6 +80,8 @@ def test_patch_partial_update_booking_with_auth(booker_client, auth_token, creat
     assert response.status_code == 200
 
     data = response.json()
+
+    validate(instance=data, schema=BOOKING_SCHEMA)
 
     assert data["firstname"] == payload["firstname"]
     assert data["lastname"] == payload["lastname"]

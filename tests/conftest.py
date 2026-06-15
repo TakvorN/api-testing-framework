@@ -1,7 +1,9 @@
 import pytest
+from jsonschema import validate
 
 from api.client import APIClient
 from config.settings import JSONPLACEHOLDER_BASE_URL, RESTFUL_BOOKER_BASE_URL
+from schemas.booker_schema import AUTH_TOKEN_SCHEMA, CREATE_BOOKING_SCHEMA
 
 
 @pytest.fixture
@@ -22,7 +24,12 @@ def auth_token(booker_client):
     }
 
     response = booker_client.post("auth", json=payload)
+
+    assert response.status_code == 200
+    
     data = response.json()
+
+    validate(instance=data, schema=AUTH_TOKEN_SCHEMA)
 
     return data["token"]
 
@@ -49,6 +56,8 @@ def created_booking(booker_client, booking_payload):
     assert response.status_code == 200
 
     data = response.json()
+
+    validate(instance=data, schema=CREATE_BOOKING_SCHEMA)
 
     return {
         "id": data["bookingid"],
